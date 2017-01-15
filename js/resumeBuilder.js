@@ -41,7 +41,7 @@ var bio = {
 var education = {
   schools: [{
     name: 'School 1',
-    location: 'Space',
+    location: 'Seattle',
     degree: 'AA - Web Design',
     majors: ['Web Design'],
     dates: ['2005-2006'],
@@ -90,7 +90,7 @@ var work = {
   jobs: [{
     employer: 'Employer',
     title: 'Front-end Developer',
-    location: 'Space',
+    location: 'Seattle',
     dates: 'in progress',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis sed massa at convallis. Mauris at risus sit amet turpis fringilla pretium. Donec id vehicula tortor. In vulputate sem at odio eleifend, sed lobortis justo commodo. Etiam tempor luctus sapien quis aliquam. In malesuada sapien at dignissim facilisis. Donec dictum consectetur massa, ut pulvinar leo dictum quis.',
   }],
@@ -136,7 +136,12 @@ var projects = {
   }
 };
 
+function displayMap() {
+  $('#mapDiv').append(googleMap)
+}
+
 bio.display();
 work.display();
 projects.display();
 education.display();
+displayMap();

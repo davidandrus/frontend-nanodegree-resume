@@ -107,7 +107,10 @@ function initializeMap() {
   var locations;
 
   var mapOptions = {
-    disableDefaultUI: true
+    disableDefaultUI: true,
+    // http://stackoverflow.com/a/13785609/1830384
+    center: new google.maps.LatLng(41.850033, -87.6500523),
+    zoom: 4,
   };
 
   /*
@@ -115,7 +118,6 @@ function initializeMap() {
   appended to #mapDiv in resumeBuilder.js.
   */
   map = new google.maps.Map(document.querySelector('#map'), mapOptions);
-
 
   /*
   locationFinder() returns an array of every location string from the JSONs
@@ -180,6 +182,8 @@ function initializeMap() {
       // your code goes here!
     });
 
+    /*
+    COMMENTING OUT SO SHOWS ALL OF US
     // this is where the pin actually gets added to the map.
     // bounds.extend() takes in a map location object
     bounds.extend(new google.maps.LatLng(lat, lon));
@@ -187,6 +191,7 @@ function initializeMap() {
     map.fitBounds(bounds);
     // center the map
     map.setCenter(bounds.getCenter());
+    */
   }
 
   /*
@@ -239,7 +244,7 @@ Uncomment the code below when you're ready to implement a Google Map!
 */
 
 // Calls the initializeMap() function when the page loads
-//window.addEventListener('load', initializeMap);
+window.addEventListener('load', initializeMap);
 
 // Vanilla JS way to listen for resizing of the window
 // and adjust map bounds
