@@ -1,3 +1,6 @@
+var tplReplace = function(template, value) {
+  return template.replace('%data%', value);
+}
 var bio = {
   name: 'David Andrus',
   role: 'Front End Engineer',
@@ -12,7 +15,26 @@ var bio = {
   skills: ['HTML', 'JavaScript', 'CSS'],
   biopic: 'https://avatars0.githubusercontent.com/u/1655282?v=3&s=460',
   display: function() {
+    $('#header')
+      .prepend(
+        tplReplace(HTMLheaderName, this.name) +
+        tplReplace(HTMLheaderRole, this.role)
+      );
 
+    $('#topContacts')
+      .append(tplReplace(HTMLmobile, this.contacts.mobile))
+      .append(tplReplace(HTMLemail, this.contacts.email))
+      .append(tplReplace(HTMLgithub, this.contacts.github))
+      .append(tplReplace(HTMLlocation, this.contacts.location))
+
+    $('#header')
+      .append(tplReplace(HTMLbioPic, this.biopic))
+      .append(tplReplace(HTMLwelcomeMsg, this.welcomeMessage))
+      .append(HTMLskillsStart);
+
+    this.skills.forEach(function(skill) {
+      $('#skills').append(tplReplace(HTMLskills, skill))
+    });
   }
 };
 
@@ -57,3 +79,5 @@ var projects = {
   }],
   display: function() {}
 };
+
+bio.display();
