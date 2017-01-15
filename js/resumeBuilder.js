@@ -67,6 +67,20 @@ var work = {
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis sed massa at convallis. Mauris at risus sit amet turpis fringilla pretium. Donec id vehicula tortor. In vulputate sem at odio eleifend, sed lobortis justo commodo. Etiam tempor luctus sapien quis aliquam. In malesuada sapien at dignissim facilisis. Donec dictum consectetur massa, ut pulvinar leo dictum quis.',
   }],
   display: function() {
+    this.jobs.forEach(function(job) {
+      var workItem = $(HTMLworkStart);
+      workItem
+        .append(
+          tplReplace(HTMLworkEmployer, job.employer) +
+          tplReplace(HTMLworkTitle, job.title)
+        )
+        .append(tplReplace(HTMLworkDates, job.dates))
+        .append(tplReplace(HTMLworkLocation, job.location))
+        .append(tplReplace(HTMLworkDescription, job.description))
+
+      $('#workExperience').append(workItem);
+    });
+
   }
 }
 
@@ -81,3 +95,4 @@ var projects = {
 };
 
 bio.display();
+work.display();
