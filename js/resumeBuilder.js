@@ -1,15 +1,16 @@
 var tplReplace = function(template, value) {
   return template.replace('%data%', value);
-}
+};
+
 var bio = {
   name: 'David Andrus',
   role: 'Front End Engineer',
-  contacts : {
-      mobile: '555.555.5555',
-      email: 'someemail@someemail.com',
-      github: 'https://github.com/davidandrus',
-      // twitter: string (optional)
-      location: 'Seattle',
+  contacts: {
+    mobile: '555.555.5555',
+    email: 'someemail@someemail.com',
+    github: 'https://github.com/davidandrus',
+    // twitter: string (optional)
+    location: 'Seattle',
   },
   welcomeMessage: 'Hi, I am Dave, welcome to my resume',
   skills: ['HTML', 'JavaScript', 'CSS'],
@@ -25,7 +26,7 @@ var bio = {
       .append(tplReplace(HTMLmobile, this.contacts.mobile))
       .append(tplReplace(HTMLemail, this.contacts.email))
       .append(tplReplace(HTMLgithub, this.contacts.github))
-      .append(tplReplace(HTMLlocation, this.contacts.location))
+      .append(tplReplace(HTMLlocation, this.contacts.location));
 
     $('#header')
       .append(tplReplace(HTMLbioPic, this.biopic))
@@ -33,7 +34,7 @@ var bio = {
       .append(HTMLskillsStart);
 
     this.skills.forEach(function(skill) {
-      $('#skills').append(tplReplace(HTMLskills, skill))
+      $('#skills').append(tplReplace(HTMLskills, skill));
     });
   }
 };
@@ -66,7 +67,7 @@ var education = {
         .append(tplReplace(HTMLschoolMajor, school.majors.join(', ')));
 
       $('#education').append(schoolItem);
-    })
+    });
 
     $('#education').append(HTMLonlineClasses);
 
@@ -79,10 +80,10 @@ var education = {
           tplReplace(HTMLonlineSchool, course.school)
         )
         .append(tplReplace(HTMLonlineDates, course.dates))
-        .append(tplReplace(HTMLonlineURL, course.url))
+        .append(tplReplace(HTMLonlineURL, course.url));
 
       $('#education').append(schoolItem);
-    })
+    });
   },
 };
 
@@ -104,13 +105,13 @@ var work = {
         )
         .append(tplReplace(HTMLworkDates, job.dates))
         .append(tplReplace(HTMLworkLocation, job.location))
-        .append(tplReplace(HTMLworkDescription, job.description))
+        .append(tplReplace(HTMLworkDescription, job.description));
 
       $('#workExperience').append(workItem);
     });
 
   }
-}
+};
 
 var projects = {
   projects: [{
@@ -125,11 +126,11 @@ var projects = {
       projectItem
         .append(tplReplace(HTMLprojectTitle, project.title))
         .append(tplReplace(HTMLprojectDates, project.dates))
-        .append(tplReplace(HTMLprojectDescription, project.description))
+        .append(tplReplace(HTMLprojectDescription, project.description));
 
       project.images.forEach(function(imageUrl) {
-        projectItem.append(tplReplace(HTMLprojectImage, imageUrl))
-      })
+        projectItem.append(tplReplace(HTMLprojectImage, imageUrl));
+      });
 
       $('#projects').append(projectItem);
     });
@@ -137,7 +138,7 @@ var projects = {
 };
 
 function displayMap() {
-  $('#mapDiv').append(googleMap)
+  $('#mapDiv').append(googleMap);
 }
 
 bio.display();
