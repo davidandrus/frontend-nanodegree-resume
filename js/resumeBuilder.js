@@ -89,10 +89,25 @@ var projects = {
     title: 'Project 1',
     dates: '2016-2017',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis sed massa at convallis. Mauris at risus sit amet turpis fringilla pretium. Donec id vehicula tortor. In vulputate sem at odio eleifend, sed lobortis justo commodo. Etiam tempor luctus sapien quis aliquam. In malesuada sapien at dignissim facilisis. Donec dictum consectetur massa, ut pulvinar leo dictum quis.',
-    images: ['<img src="http://placehold.it/300/200">']
+    images: ['http://placehold.it/300/200']
   }],
-  display: function() {}
+  display: function() {
+    this.projects.forEach(function(project) {
+      var projectItem = $(HTMLprojectStart);
+      projectItem
+        .append(tplReplace(HTMLprojectTitle, project.title))
+        .append(tplReplace(HTMLprojectDates, project.dates))
+        .append(tplReplace(HTMLprojectDescription, project.description))
+
+      project.images.forEach(function(imageUrl) {
+        projectItem.append(tplReplace(HTMLprojectImage, imageUrl))
+      })
+
+      $('#projects').append(projectItem);
+    });
+  }
 };
 
 bio.display();
 work.display();
+projects.display();
