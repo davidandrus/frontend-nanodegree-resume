@@ -21,7 +21,7 @@ var bio = {
         tplReplace(HTMLheaderRole, this.role)
       );
 
-    $('#topContacts')
+    $('#topContacts, #footerContacts')
       .append(tplReplace(HTMLmobile, this.contacts.mobile))
       .append(tplReplace(HTMLemail, this.contacts.email))
       .append(tplReplace(HTMLgithub, this.contacts.github))
