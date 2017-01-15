@@ -42,19 +42,47 @@ var education = {
   schools: [{
     name: 'School 1',
     location: 'Space',
-    degree: 'Web Design',
+    degree: 'AA - Web Design',
     majors: ['Web Design'],
     dates: ['2005-2006'],
     url: 'http://someschool.com',
   }],
   onlineCourses: [{
     title: 'Online Course',
-    school: 'Online Course',
+    school: 'Udacity',
     dates: ['2005-2006'],
     url: 'http://someschool.com',
   }],
   display: function() {
+    education.schools.forEach(function(school) {
+      var schoolItem = $(HTMLschoolStart);
+      schoolItem
+        .append(
+          tplReplace(HTMLschoolName, school.name) +
+          tplReplace(HTMLschoolDegree, school.degree)
+        )
+        .append(tplReplace(HTMLschoolDates, school.dates))
+        .append(tplReplace(HTMLschoolLocation, school.location))
+        .append(tplReplace(HTMLschoolMajor, school.majors.join(', ')));
 
+      $('#education').append(schoolItem);
+    })
+
+    $('#education').append(HTMLonlineClasses);
+
+    education.onlineCourses.forEach(function(course) {
+      var schoolItem = $(HTMLschoolStart);
+
+      schoolItem
+        .append(
+          tplReplace(HTMLonlineTitle, course.title) +
+          tplReplace(HTMLonlineSchool, course.school)
+        )
+        .append(tplReplace(HTMLonlineDates, course.dates))
+        .append(tplReplace(HTMLonlineURL, course.url))
+
+      $('#education').append(schoolItem);
+    })
   },
 };
 
@@ -111,3 +139,4 @@ var projects = {
 bio.display();
 work.display();
 projects.display();
+education.display();
