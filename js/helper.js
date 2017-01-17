@@ -110,11 +110,18 @@ function initializeMap() {
     disableDefaultUI: true,
   };
 
+  // @NOTE - static latLngBounds since there is only one pin
+  window.mapBounds = new google.maps.LatLngBounds(
+    new google.maps.LatLng(25.415989, -124.277344),
+    new google.maps.LatLng(47.109392, -65.742188)
+  );
+
   /*
   For the map to be displayed, the googleMap var must be
   appended to #mapDiv in resumeBuilder.js.
   */
   map = new google.maps.Map(document.querySelector('#map'), mapOptions);
+  map.fitBounds(mapBounds);
 
   /*
   locationFinder() returns an array of every location string from the JSONs
@@ -158,7 +165,7 @@ function initializeMap() {
     var lat = placeData.geometry.location.lat();  // latitude from the place service
     var lon = placeData.geometry.location.lng();  // longitude from the place service
     var name = placeData.formatted_address;   // name of the place from the place service
-    var bounds = window.mapBounds;            // current boundaries of the map window
+    // var bounds = window.mapBounds;            // current boundaries of the map window
 
     // marker is an object with additional data about the pin for a single location
     var marker = new google.maps.Marker({
@@ -181,11 +188,11 @@ function initializeMap() {
 
     // this is where the pin actually gets added to the map.
     // bounds.extend() takes in a map location object
-    bounds.extend(new google.maps.LatLng(lat, lon));
-    // fit the map to the new marker
-    map.fitBounds(bounds);
-    // center the map
-    map.setCenter(bounds.getCenter());
+    // bounds.extend(new google.maps.LatLng(lat, lon));
+    // // fit the map to the new marker
+    // map.fitBounds(bounds);
+    // // center the map
+    // map.setCenter(bounds.getCenter());
   }
 
   /*
@@ -222,7 +229,7 @@ function initializeMap() {
   }
 
   // Sets the boundaries of the map based on pin locations
-  window.mapBounds = new google.maps.LatLngBounds();
+  // window.mapBounds = new google.maps.LatLngBounds();
 
   // locations is an array of location strings returned from locationFinder()
   locations = locationFinder();
