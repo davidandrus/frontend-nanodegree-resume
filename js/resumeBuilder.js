@@ -45,13 +45,13 @@ var education = {
     location: 'Seattle',
     degree: 'AA - Web Design',
     majors: ['Web Design'],
-    dates: ['2005-2006'],
+    dates: '2005-2006',
     url: 'http://someschool.com',
   }],
   onlineCourses: [{
     title: 'Online Course',
     school: 'Udacity',
-    dates: ['2005-2006'],
+    dates: '2016-present',
     url: 'http://someschool.com',
   }],
   display: function() {
