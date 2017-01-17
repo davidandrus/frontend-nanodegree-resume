@@ -108,9 +108,6 @@ function initializeMap() {
 
   var mapOptions = {
     disableDefaultUI: true,
-    // http://stackoverflow.com/a/13785609/1830384
-    center: new google.maps.LatLng(41.850033, -87.6500523),
-    zoom: 4,
   };
 
   /*
@@ -182,8 +179,6 @@ function initializeMap() {
       // your code goes here!
     });
 
-    /*
-    COMMENTING OUT SO SHOWS ALL OF US
     // this is where the pin actually gets added to the map.
     // bounds.extend() takes in a map location object
     bounds.extend(new google.maps.LatLng(lat, lon));
@@ -191,7 +186,6 @@ function initializeMap() {
     map.fitBounds(bounds);
     // center the map
     map.setCenter(bounds.getCenter());
-    */
   }
 
   /*
@@ -248,7 +242,7 @@ window.addEventListener('load', initializeMap);
 
 // Vanilla JS way to listen for resizing of the window
 // and adjust map bounds
-//window.addEventListener('resize', function(e) {
+window.addEventListener('resize', function(e) {
   //Make sure the map bounds get updated on page resize
-//  map.fitBounds(mapBounds);
-//});
+ map.fitBounds(mapBounds);
+});
